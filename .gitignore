@@ -1,8 +1,35 @@
+# Виртуальное окружение
 venv/
+env/
+ENV/
+
+# Python
 *.pyc
-__pycache__
+*.pyo
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Django
 db.sqlite3
 *.sqlite3
+*.log
+media/
+staticfiles/
+
+# Переменные окружения
 .env
+
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
