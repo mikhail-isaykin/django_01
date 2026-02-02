@@ -1,8 +1,2 @@
 {% extends 'base.html' %}
-{% block title %}О нас{% endblock title %}
-{% block title_h1 %}О нас{% endblock title_h1 %}
-
-{% block content %}
-    <p>Телефон: +12345677890</p>
-    <p>Email: admin@admin.com</p>
-{% endblock content %}
+{% block body %} {{ block.super }} - О нас {% endblock body %}

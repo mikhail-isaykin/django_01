@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'blog/index.html', context={'site': 'Stepik.org'})
+    return render(request, 'base.html')
 
 
 def about(request):
-    return render(request, 'blog/about.html', context={'site': 'Stepik'})
+    return render(request, 'blog/about.html')

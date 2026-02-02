@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}Default title{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <title>Django 5</title>
 </head>
 <body>
-<nav>
-    <div><a href="/">Главная</a> | <a href="/about/">О нас</a></div>
-</nav>
-<h1>{% block title_h1 %}{% endblock title_h1 %}</h1>
-<div>{% block content %}{% endblock content %}</div>
-{% include 'blog/banner.html' with tutorial='Django' %}
-<footer>
-    <div>MyCorp. 2023. All rights reserved.</div>
-</footer>
+{% block body %}
+    Главная страница
+{% endblock body %}
 </body>
 </html>
