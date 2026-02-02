@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'blog/index.html', context={'site': 'mysite.com'})
 
 
-def about(request):
-    return render(request, 'blog/about.html')
+def contact(request):
+    return redirect('blog:about')
