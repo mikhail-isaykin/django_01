@@ -2,5 +2,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    cat = ['Python', 'Java', 'JS', 'Go', 'C#', 'Kotlin']
-    return render(request, 'blog/index.html', context={'cat': cat})
+    return render(request, 'blog/index.html', context={'site': 'Stepik.org'})
+
+
+def about(request):
+    return render(request, 'blog/about.html', context={'site': 'Stepik'})

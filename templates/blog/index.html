@@ -1,12 +1,3 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8' />
-    <title>Учу Django</title>
-</head>
-<body>
-    <h1>Логотип Django</h1>
-    <img src="{% static 'images/django_logo.png' %}" width='300px'>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block title_h1 %}Главная{% endblock title_h1 %}
