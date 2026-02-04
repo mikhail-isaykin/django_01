@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'posts.apps.PostsConfig',
     'onetoone.apps.OnetooneConfig',
+    'onetomany.apps.OnetomanyConfig',
 ]
 
 MIDDLEWARE = [
