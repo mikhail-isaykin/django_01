@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'onetoone.apps.OnetooneConfig',
     'onetomany.apps.OnetomanyConfig',
+    'manytomany.apps.ManytomanyConfig',
 ]
 
 MIDDLEWARE = [
