@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'posts.apps.PostsConfig',
+    'onetoone.apps.OnetooneConfig',
 ]
 
 MIDDLEWARE = [
