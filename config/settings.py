@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'onetomany.apps.OnetomanyConfig',
     'manytomany.apps.ManytomanyConfig',
     'orm_method.apps.OrmMethodConfig',
+    'crud.apps.CrudConfig',
 ]
 
 MIDDLEWARE = [
