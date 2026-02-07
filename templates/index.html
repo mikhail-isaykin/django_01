@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Django - SecondProject</title>
+    <meta charset="utf-8" />
+    <title>Учу Django</title>
 </head>
 <body>
-<table>
-{% for person in people %}
-    <tr>
-        <td>{{ person.id }}</td>
-        <td>{{ person.first_name }}</td>
-        <td>{{ person.last_name }}</td>
-        <td>{{ person.age }}</td>
-        <td>{{ person.created }}</td>
-        <td>{{ person.work_experience }}</td>
-    </tr>
-{% endfor %}
-</table>
+    <table>
+        {{ form.as_table }}
+    </table>
 </body>
 </html>
