@@ -1,7 +1,6 @@
-from django import forms
+from django.forms import Form, CharField, IntegerField
 
 
-class UserForm(forms.Form):
-    name = forms.CharField(label='Имя', help_text='Введите свое имя', min_length=2, max_length=10)
-    age = forms.IntegerField(label='Ваш возраст?', help_text='Введите свой возраст')
-    reklama = forms.BooleanField(label='Coглacны получать рекламу?', required=False)
+class PersonForm(Form):
+    name = CharField(label='Введите имя')
+    age = IntegerField(label='Введите возраст')
