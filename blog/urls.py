@@ -1,27 +1,9 @@
 from django.urls import path
-from django.views.generic import TemplateView
-from blog import views
-
+from . import views
 
 app_name = 'blog'
 
 urlpatterns = [
-    path(
-        '',
-        views.index,
-        name='home'
-    ),
-    path(
-        'about/',
-        TemplateView.as_view(
-            template_name='blog/about.html',
-            extra_context={'site': 'mysite.com'}
-        ),
-        name='about'
-    ),
-    path(
-        'contact/',
-        views.contact,
-        name='contact'
-    ),
+    path('', views.post_list, name='post_list'),
+    path('<int:id>/', views.post_detail, name='post_detail'),
 ]

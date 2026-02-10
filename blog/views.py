@@ -1,9 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 
-def index(request):
-    return render(request, 'blog/index.html', context={'site': 'mysite.com'})
+def post_list(request):
+    posts = Post.published.all()
+    return render(request,
+                  'blog/post/list.html',
+                  {'posts': posts})
 
 
-def contact(request):
-    return redirect('blog:about')
+def post_detail(request, id): 
+    post = get_object_or_404(Post,
+                             id=id,
+                             status=Post.Status.PUBLISHED)
+    return render(request,
+                  'blog/post/detail.html',
+                  {'post': post})
