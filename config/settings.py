@@ -39,12 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'posts.apps.PostsConfig',
-    'onetoone.apps.OnetooneConfig',
-    'onetomany.apps.OnetomanyConfig',
-    'manytomany.apps.ManytomanyConfig',
-    'orm_method.apps.OrmMethodConfig',
-    'crud.apps.CrudConfig',
 ]
 
 MIDDLEWARE = [
