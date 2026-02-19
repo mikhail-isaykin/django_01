@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
-
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(status=Post.Status.PUBLISHED)
-
+        return super().get_queryset() \
+            .filter(status=Post.Status.PUBLISHED)
+    
 
 class Post(models.Model):
     class Status(models.TextChoices):
@@ -30,6 +30,7 @@ class Post(models.Model):
                               default=Status.DRAFT)
     objects = models.Manager() # менеджер, применяемый по умолчанию
     published = PublishedManager() # пользовательский менеджер
+    tags = TaggableManager()
 
     
     class Meta:
@@ -49,7 +50,7 @@ class Post(models.Model):
                              self.publish.month,
                              self.publish.day,
                              self.slug])
-    
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,
@@ -72,10 +73,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
-
-
-class Post(models.Model):
-
-    # ...
-
-    tags = TaggableManager()
