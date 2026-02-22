@@ -157,3 +157,29 @@ class PostViewTest(TestCase):
             reverse('blog:post_share', args=[draft.id])
         )
         self.assertEqual(response.status_code, 404)
+
+    def test_post_list_by_tag(self):
+        self.post.tags.add('django')
+        response = self.client.get(
+            reverse('blog:post_list_by_tag', args=['django'])
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(self.post, response.context['posts'])
+
+    def test_post_comment_requires_post(self):
+        response = self.client.post(
+            reverse('blog:post_comment', args=[self.post.id]),
+            {
+                'name': 'Test User',
+                'email': 'test@example.com',
+                'body': 'Great post!'
+            }
+        )
+        # должен редиректить или возвращать 200
+        self.assertIn(response.status_code, [200, 302])
+
+    def test_post_comment_only_post_method(self):
+        response = self.client.get(
+            reverse('blog:post_comment', args=[self.post.id])
+        )
+        self.assertEqual(response.status_code, 405)
