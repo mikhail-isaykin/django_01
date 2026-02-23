@@ -397,3 +397,42 @@ class PostViewTest(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertIn('comments', response.context)
+
+
+class PaginationTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='testpass123'
+        )
+        for i in range(5):
+            Post.objects.create(
+                title=f'Post {i}',
+                slug=f'post-{i}',
+                author=self.user,
+                body=f'Body {i}',
+                status=Post.Status.PUBLISHED,
+                publish=timezone.now()
+            )
+
+    def test_first_page_has_3_posts(self):
+        response = self.client.get(reverse('blog:post_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['posts']), 3)
+
+    def test_second_page_has_remaining_posts(self):
+        response = self.client.get(reverse('blog:post_list') + '?page=2')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['posts']), 2)
+
+    def test_invalid_page_returns_first_page(self):
+        response = self.client.get(reverse('blog:post_list') + '?page=abc')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['posts']), 3)
+
+    def test_out_of_range_page_returns_last_page(self):
+        response = self.client.get(reverse('blog:post_list') + '?page=999')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['posts']), 2)
