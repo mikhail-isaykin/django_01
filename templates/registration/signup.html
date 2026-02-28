@@ -4,7 +4,11 @@
     <h2> Sign Up </h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>{{ form.non_field_errors }}</div>
+        {% for f in form %}
+            <p><label>{{f.label}}: </label>{{ f }}</p>
+            <div>{{ f.errors }}</div>
+        {% endfor %}
 
         <p><input type="submit" value="Sign Up"></p>
     </form>
