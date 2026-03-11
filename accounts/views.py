@@ -4,6 +4,7 @@ from .forms import SignUpForm, LoginForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 
 class SignUpView(generic.CreateView):
@@ -49,3 +50,9 @@ class CustomLoginView(LoginView):
 
         # В противном случае сеанс браузера будет таким же как время сеанса cookie "SESSION_COOKIE_AGE", определенное в settings.py
         return super(CustomLoginView, self).form_valid(form)
+
+
+
+@login_required
+def profile(request):
+    return render(request, 'registration/profile.html')
