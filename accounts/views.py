@@ -52,7 +52,6 @@ class CustomLoginView(LoginView):
         return super(CustomLoginView, self).form_valid(form)
 
 
-
 @login_required
 def profile(request):
     return render(request, 'registration/profile.html')
